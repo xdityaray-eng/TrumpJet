@@ -1,0 +1,2421 @@
+/* ==========================================
+   BACKGROUND GRID
+========================================== */
+
+.background-grid{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:-2;
+
+    pointer-events:none;
+
+    background-image:
+
+        linear-gradient(
+            rgba(212,175,55,.025) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(212,175,55,.025) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        60px 60px;
+
+    animation:
+        gridMove 25s linear infinite;
+
+    mask-image:
+    linear-gradient(
+        to bottom,
+        rgba(0,0,0,1),
+        rgba(0,0,0,.6),
+        transparent
+    );
+
+    -webkit-mask-image:
+    linear-gradient(
+        to bottom,
+        rgba(0,0,0,1),
+        rgba(0,0,0,.6),
+        transparent
+    );
+}
+
+@keyframes gridMove{
+
+    from{
+
+        transform:
+        translateY(0);
+    }
+
+    to{
+
+        transform:
+        translateY(60px);
+    }
+
+}
+
+/* ==========================================
+   GOLD PARTICLES
+========================================== */
+
+.particles{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:-1;
+
+    overflow:hidden;
+}
+
+.particles span{
+
+    position:absolute;
+
+    width:4px;
+    height:4px;
+
+    border-radius:50%;
+
+    background:rgba(212,175,55,.4);
+
+    box-shadow:
+        0 0 10px rgba(212,175,55,.4);
+
+    animation:
+        floatParticle linear infinite;
+}
+
+@keyframes floatParticle{
+
+    from{
+
+        transform:
+        translateY(110vh);
+
+        opacity:0;
+    }
+
+    10%{
+
+        opacity:1;
+    }
+
+    90%{
+
+        opacity:1;
+    }
+
+    to{
+
+        transform:
+        translateY(-20vh);
+
+        opacity:0;
+    }
+
+}
+
+/* ==========================================
+   MOUSE SPOTLIGHT
+========================================== */
+
+.mouse-spotlight{
+
+    position:fixed;
+
+    width:500px;
+    height:500px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    z-index:0;
+
+    left:0;
+    top:0;
+
+    transform:
+    translate(-50%,-50%);
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(212,175,55,.12) 0%,
+        rgba(212,175,55,.06) 30%,
+        transparent 70%
+    );
+
+    filter:blur(40px);
+
+    transition:
+    transform .08s linear;
+
+    mix-blend-mode:screen;
+}
+
+
+/* ==========================================
+   ROOT VARIABLES
+========================================== */
+
+:root{
+
+    --gold:#d4af37;
+    --gold-light:#f4d977;
+    --gold-dark:#9b7416;
+
+    --bg:#050505;
+    --bg-secondary:#0d0d0d;
+    --card:#111111;
+
+    --white:#ffffff;
+    --text:#e8e8e8;
+    --muted:#9d9d9d;
+
+    --border:
+    rgba(212,175,55,.15);
+
+    --radius:28px;
+
+    --shadow:
+    0 20px 60px rgba(0,0,0,.45);
+
+    --transition:.35s ease;
+
+    --container:1300px;
+}
+
+
+/* ==========================================
+   RESET
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    padding-top:0;
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    font-family:'Inter',sans-serif;
+
+    overflow-x:hidden;
+}
+
+
+/* ==========================================
+   GLOBAL
+========================================== */
+
+img{
+    display:block;
+    max-width:100%;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button,
+input,
+select{
+    font:inherit;
+    outline:none;
+}
+
+section{
+    padding:110px 0;
+}
+
+
+/* ==========================================
+   CONTAINER
+========================================== */
+
+.container{
+
+    width:min(92%, var(--container));
+
+    margin:auto;
+}
+
+
+/* ==========================================
+   TYPOGRAPHY
+========================================== */
+
+h1,
+h2,
+h3,
+h4{
+
+    font-family:
+    'Cormorant Garamond',
+    serif;
+
+    color:var(--white);
+
+    line-height:1;
+}
+
+p{
+
+    color:var(--muted);
+
+    line-height:1.8;
+}
+
+
+/* ==========================================
+   SECTION HEADER
+========================================== */
+
+.section-heading{
+
+    text-align:center;
+
+    max-width:800px;
+
+    margin:0 auto 80px;
+}
+
+.section-heading span{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    border:1px solid var(--border);
+
+    color:var(--gold);
+
+    font-size:.85rem;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+}
+
+.section-heading h2{
+
+    font-size:
+    clamp(2.8rem,6vw,5rem);
+
+    margin:20px 0;
+}
+
+.section-heading p{
+
+    font-size:1.05rem;
+}
+
+
+/* ==========================================
+   REUSABLE TAG
+========================================== */
+
+.section-tag{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    border:1px solid var(--border);
+
+    color:var(--gold);
+
+    font-size:.85rem;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+    margin-bottom:25px;
+}
+
+
+/* ==========================================
+   BUTTONS
+========================================== */
+
+.btn-primary,
+.btn-secondary,
+.nav-button{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    transition:var(--transition);
+
+    border-radius:999px;
+
+    font-weight:600;
+}
+
+.btn-primary,
+.nav-button{
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--gold-light),
+        var(--gold)
+    );
+
+    color:#000;
+}
+
+.btn-primary{
+
+    padding:16px 34px;
+}
+
+.nav-button{
+
+    padding:14px 28px;
+}
+
+.btn-secondary{
+
+    padding:16px 34px;
+
+    border:1px solid var(--border);
+
+    color:var(--white);
+}
+
+.btn-primary:hover,
+.nav-button:hover{
+
+    transform:
+    translateY(-3px);
+
+    box-shadow:
+    0 10px 30px rgba(212,175,55,.25);
+}
+
+.btn-secondary:hover{
+
+    border-color:var(--gold);
+
+    color:var(--gold);
+}
+
+
+/* ==========================================
+   LOADER
+========================================== */
+
+.loader{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#000;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    z-index:9999;
+
+    transition:
+    opacity .8s ease,
+    visibility .8s ease;
+}
+
+.loader-inner{
+
+    width:min(420px,90%);
+
+    text-align:center;
+}
+
+.loader-inner img{
+
+    width:120px;
+
+    margin:0 auto 20px;
+}
+
+.loader-inner h2{
+
+    font-size:3rem;
+
+    color:var(--gold);
+
+    margin-bottom:20px;
+}
+
+.loader-line{
+
+    width:100%;
+
+    height:8px;
+
+    background:#111;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    margin-bottom:20px;
+}
+
+.loader-line span{
+
+    display:block;
+
+    width:0%;
+
+    height:100%;
+
+    background:
+    linear-gradient(
+        90deg,
+        var(--gold-dark),
+        var(--gold-light)
+    );
+
+    animation:
+    loading 2s linear forwards;
+}
+
+@keyframes loading{
+
+    from{
+        width:0%;
+    }
+
+    to{
+        width:100%;
+    }
+}
+
+/* ==========================================
+   NAVBAR
+========================================== */
+
+.navbar{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+
+    z-index:1000;
+
+    backdrop-filter:blur(24px);
+
+    background:
+    rgba(5,5,5,.72);
+
+    border-bottom:
+    1px solid rgba(212,175,55,.08);
+
+    transition:var(--transition);
+}
+
+.nav-container{
+
+    height:90px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+}
+
+
+/* ==========================================
+   LOGO
+========================================== */
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+}
+
+.logo img{
+
+    width:56px;
+    height:56px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    border:
+    1px solid rgba(212,175,55,.18);
+}
+
+.logo span{
+
+    font-family:
+    'Cormorant Garamond',
+    serif;
+
+    font-size:1.45rem;
+
+    font-weight:700;
+
+    color:var(--white);
+
+    letter-spacing:.5px;
+}
+
+
+/* ==========================================
+   MENU
+========================================== */
+
+.nav-menu{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:40px;
+}
+
+.nav-menu a{
+
+    position:relative;
+
+    color:var(--text);
+
+    font-size:.95rem;
+
+    transition:var(--transition);
+}
+
+.nav-menu a:hover{
+
+    color:var(--gold);
+}
+
+
+/* GOLD UNDERLINE */
+
+.nav-menu a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-8px;
+
+    width:0%;
+
+    height:1px;
+
+    background:var(--gold);
+
+    transition:var(--transition);
+}
+
+.nav-menu a:hover::after{
+
+    width:100%;
+}
+
+
+/* ==========================================
+   NAV BUTTON
+========================================== */
+
+.nav-button{
+
+    min-width:150px;
+}
+
+
+/* ==========================================
+   SCROLLED STATE
+========================================== */
+
+.navbar.scrolled{
+
+    background:
+    rgba(5,5,5,.92);
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.35);
+}
+
+/* ==========================================
+   HERO
+========================================== */
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    padding-top:90px;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+
+/* ==========================================
+   HERO CONTAINER
+========================================== */
+
+.hero-container{
+
+    display:grid;
+
+    grid-template-columns:
+    1.05fr 0.95fr;
+
+    gap:80px;
+
+    align-items:center;
+}
+
+
+/* ==========================================
+   HERO CONTENT
+========================================== */
+
+.hero-content{
+
+    max-width:650px;
+}
+
+.hero-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    padding:12px 20px;
+
+    border-radius:999px;
+
+    border:1px solid var(--border);
+
+    color:var(--gold);
+
+    font-size:.9rem;
+
+    margin-bottom:28px;
+}
+
+.hero-content h1{
+
+    font-size:
+    clamp(3.5rem,6vw,5.8rem);
+
+    line-height:.92;
+
+    letter-spacing:-1px;
+
+    margin-bottom:28px;
+}
+
+.hero-content h1 span{
+
+    display:block;
+
+    color:var(--gold);
+}
+
+.hero-content p{
+
+    font-size:1.08rem;
+
+    max-width:560px;
+
+    margin-bottom:42px;
+}
+
+.hero-actions{
+
+    display:flex;
+
+    gap:18px;
+
+    flex-wrap:wrap;
+}
+
+
+/* ==========================================
+   HERO IMAGE
+========================================== */
+
+.hero-visual{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+    
+}
+
+.hero-visual img{
+
+    width:100%;
+
+    height:auto;
+
+    max-height:650px;
+
+    object-fit:contain;
+
+    border-radius:32px;
+
+    border:1px solid rgba(212,175,55,.12);
+
+    box-shadow:0 30px 80px rgba(0,0,0,.45);
+
+    transition:transform .5s ease;
+}
+
+.hero-visual img:hover{
+
+    transform:
+    translateY(-10px);
+}
+
+/* ==========================================
+   AIRCRAFT ENGINE GLOW
+========================================== */
+
+.engine-glow{
+
+    position:absolute;
+
+    width:350px;
+    height:350px;
+
+    border-radius:50%;
+
+    left:50%;
+    top:50%;
+
+    transform:
+    translate(-50%,-50%);
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(212,175,55,.22),
+        rgba(212,175,55,.08),
+        transparent 70%
+    );
+
+    filter:blur(35px);
+
+    z-index:-1;
+
+    animation:
+    enginePulse 8s ease-in-out infinite;
+}
+
+
+/* ==========================================
+   ENGINE GLOW ANIMATION
+========================================== */
+
+@keyframes enginePulse{
+
+    0%{
+
+        transform:
+        translate(-50%,-50%)
+        scale(0.95);
+
+        opacity:.6;
+    }
+
+    50%{
+
+        transform:
+        translate(-50%,-50%)
+        scale(1.15);
+
+        opacity:1;
+    }
+
+    100%{
+
+        transform:
+        translate(-50%,-50%)
+        scale(0.95);
+
+        opacity:.6;
+    }
+
+}
+
+/* ==========================================
+   RESPONSIVE HERO
+========================================== */
+
+@media(max-width:1100px){
+
+    .hero-container{
+
+        grid-template-columns:1fr;
+
+        text-align:center;
+    }
+
+    .hero-content{
+
+        max-width:none;
+    }
+
+    .hero-actions{
+
+        justify-content:center;
+    }
+
+    .hero-visual{
+
+        max-width:800px;
+
+        margin:auto;
+    }
+}
+
+@media(max-width:700px){
+
+    .hero-content h1{
+
+        font-size:
+        clamp(3rem,12vw,4.5rem);
+    }
+
+    .hero-actions{
+
+        flex-direction:column;
+    }
+
+    .btn-primary,
+    .btn-secondary{
+
+        width:100%;
+    }
+}
+
+/* ==========================================
+   GOLD GLOW
+========================================== */
+
+.hero-visual::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:450px;
+    height:450px;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(212,175,55,.18),
+        transparent 70%
+    );
+
+    top:-120px;
+    right:-120px;
+
+    z-index:-1;
+}
+
+
+/* ==========================================
+   BACKGROUND GLOW
+========================================== */
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:700px;
+    height:700px;
+
+    left:-250px;
+    top:-250px;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(212,175,55,.05),
+        transparent 70%
+    );
+
+    pointer-events:none;
+}
+
+/* ==========================================
+   FEATURES SECTION
+========================================== */
+
+.features{
+
+    position:relative;
+}
+
+.features-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:30px;
+
+    margin-top:70px;
+}
+
+
+/* CARD */
+
+.aircraft-card{
+
+    background:
+    linear-gradient(
+        180deg,
+        rgba(255,255,255,.02),
+        rgba(255,255,255,.01)
+    );
+
+    border:1px solid var(--border);
+
+    border-radius:28px;
+
+    padding:40px 32px;
+
+    transition:var(--transition);
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.aircraft-card:hover{
+
+    transform:
+    translateY(-10px);
+
+    border-color:
+    rgba(212,175,55,.35);
+
+    box-shadow:
+    0 25px 60px rgba(0,0,0,.35);
+}
+
+
+/* ICON */
+
+.feature-icon{
+
+    width:70px;
+    height:70px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid var(--border);
+
+    color:var(--gold);
+
+    font-size:1.6rem;
+
+    margin-bottom:25px;
+}
+
+
+/* TITLE */
+
+.aircraft-card h3{
+
+    font-size:2rem;
+
+    margin-bottom:16px;
+}
+
+
+/* TEXT */
+
+.aircraft-card p{
+
+    font-size:1rem;
+
+    line-height:1.9;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:1100px){
+
+    .features-grid{
+
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+}
+
+@media(max-width:700px){
+
+    .features-grid{
+
+        grid-template-columns:1fr;
+    }
+}
+
+/* ==========================================
+   AIRCRAFT SHOWCASE
+========================================== */
+
+.aircraft-section{
+    position:relative;
+}
+
+.aircraft-section .section-heading{
+    margin:0 auto 60px;
+}
+
+.aircraft-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    1.25fr 0.75fr;
+
+    gap:50px;
+
+    align-items:center;
+}
+
+.aircraft-image{
+
+    display:flex;
+
+    align-items:center;
+}
+
+.aircraft-image img{
+
+    width:100%;
+
+    border-radius:32px;
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+
+    transition:.5s ease;
+}
+
+.aircraft-image img:hover{
+
+    transform:scale(1.03);
+}
+
+.aircraft-features{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+}
+
+.aircraft-feature-card{
+
+    background:
+    rgba(255,255,255,.02);
+
+    border:1px solid var(--border);
+
+    border-radius:24px;
+
+    padding:24px 28px;
+
+    transition:var(--transition);
+}
+
+.aircraft-feature-card:hover{
+
+    transform:translateY(-6px);
+
+    border-color:
+    rgba(212,175,55,.4);
+
+    box-shadow:
+    0 20px 40px rgba(212,175,55,.08);
+}
+
+.aircraft-feature-card h3{
+
+    font-size:1.55rem;
+
+    margin-bottom:10px;
+}
+
+.aircraft-feature-card p{
+
+    font-size:.98rem;
+
+    line-height:1.7;
+}
+
+@media(max-width:1100px){
+
+    .aircraft-grid{
+
+        grid-template-columns:1fr;
+    }
+}
+
+/* ==========================================
+   STORY SECTION
+========================================== */
+
+.story-section{
+    position:relative;
+}
+
+.story-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:80px;
+
+    align-items:center;
+}
+
+/* IMAGE */
+
+.story-image img{
+
+    width:100%;
+
+    border-radius:32px;
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+
+    transition:var(--transition);
+}
+
+.story-image img:hover{
+
+    transform:translateY(-8px);
+}
+
+/* CONTENT */
+
+.story-content h2{
+
+    font-size:
+    clamp(3rem,5vw,4.8rem);
+
+    margin-bottom:30px;
+
+    line-height:.95;
+}
+
+.story-content > p{
+
+    margin-bottom:22px;
+
+    font-size:1.05rem;
+}
+
+/* POINTS */
+
+.story-points{
+
+    margin-top:40px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+}
+
+.story-point{
+
+    display:flex;
+
+    gap:22px;
+
+    align-items:flex-start;
+}
+
+.point-number{
+
+    width:60px;
+    height:60px;
+
+    flex-shrink:0;
+
+    border-radius:50%;
+
+    border:1px solid var(--border);
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    color:var(--gold);
+
+    font-weight:700;
+}
+
+.story-point h4{
+
+    font-size:1.4rem;
+
+    margin-bottom:8px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1100px){
+
+    .story-grid{
+
+        grid-template-columns:1fr;
+
+        gap:50px;
+    }
+
+    .story-content{
+
+        text-align:center;
+    }
+
+    .story-point{
+
+        justify-content:center;
+    }
+}
+
+/* ==========================================
+   VISION SECTION
+========================================== */
+
+.vision-section{
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.vision-content{
+
+    max-width:1000px;
+
+    margin:auto;
+
+    text-align:center;
+}
+
+.vision-words{
+
+    margin:40px 0;
+}
+
+.vision-words h2{
+
+    font-size:
+    clamp(4rem,10vw,8rem);
+
+    line-height:.9;
+
+    letter-spacing:-3px;
+
+    margin-bottom:10px;
+
+    transition:var(--transition);
+}
+
+.vision-words h2:nth-child(1){
+
+    color:var(--white);
+}
+
+.vision-words h2:nth-child(2){
+
+    color:var(--gold);
+}
+
+.vision-words h2:nth-child(3){
+
+    color:var(--white);
+}
+
+.vision-words h2:hover{
+
+    transform:
+    translateY(-8px);
+
+    text-shadow:
+    0 0 30px rgba(212,175,55,.25);
+}
+
+.vision-content p{
+
+    max-width:700px;
+
+    margin:auto;
+
+    font-size:1.15rem;
+
+    line-height:1.9;
+}
+
+
+/* ==========================================
+   GOLD BACKGROUND EFFECT
+========================================== */
+
+.vision-section::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:700px;
+    height:700px;
+
+    left:50%;
+    top:50%;
+
+    transform:
+    translate(-50%,-50%);
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(212,175,55,.08),
+        transparent 70%
+    );
+
+    pointer-events:none;
+
+    z-index:-1;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:768px){
+
+    .vision-words h2{
+
+        font-size:
+        clamp(3rem,12vw,5rem);
+    }
+
+    .vision-content p{
+
+        font-size:1rem;
+    }
+}
+
+/* ==========================================
+   ELITE MEMBERSHIP
+========================================== */
+
+.elite-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    420px 1fr;
+
+    gap:80px;
+
+    align-items:center;
+}
+
+
+/* ==========================================
+   FORM
+========================================== */
+
+.elite-form{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:32px;
+
+    padding:40px;
+
+    box-shadow:var(--shadow);
+}
+
+.form-group{
+
+    margin-bottom:24px;
+}
+
+.form-group label{
+
+    display:block;
+
+    margin-bottom:12px;
+
+    color:var(--white);
+
+    font-weight:600;
+}
+
+.form-group input,
+.form-group select{
+
+    width:100%;
+
+    height:60px;
+
+    background:#0b0b0b;
+
+    border:1px solid rgba(212,175,55,.12);
+
+    border-radius:16px;
+
+    padding:0 18px;
+
+    color:var(--white);
+}
+
+.form-group input:focus,
+.form-group select:focus{
+
+    border-color:var(--gold);
+}
+
+#generateCard{
+
+    width:100%;
+
+    height:60px;
+
+    border:none;
+
+    cursor:pointer;
+
+    border-radius:16px;
+
+    font-weight:700;
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--gold-light),
+        var(--gold)
+    );
+
+    color:#000;
+
+    transition:var(--transition);
+}
+
+#generateCard:hover{
+
+    transform:
+    translateY(-4px);
+
+    box-shadow:
+    0 12px 30px rgba(212,175,55,.25);
+}
+
+
+/* ==========================================
+   CARD PREVIEW
+========================================== */
+
+.elite-preview{
+
+    display:flex;
+
+    justify-content:center;
+}
+
+.elite-card{
+
+    width:100%;
+
+    max-width:650px;
+
+    min-height:360px;
+
+    padding:35px;
+
+    border-radius:32px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+    linear-gradient(
+        135deg,
+        #1a1a1a,
+        #080808
+    );
+
+    border:1px solid rgba(212,175,55,.18);
+
+    box-shadow:
+    0 25px 80px rgba(0,0,0,.45);
+}
+
+
+/* GOLD SHINE */
+
+.elite-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+        120deg,
+        transparent,
+        rgba(212,175,55,.08),
+        transparent
+    );
+
+    transform:
+    translateX(-100%);
+
+    animation:
+    cardShine 6s infinite;
+}
+
+@keyframes cardShine{
+
+    100%{
+        transform:
+        translateX(100%);
+    }
+}
+
+
+/* ==========================================
+   CARD CONTENT
+========================================== */
+
+.elite-card-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:70px;
+}
+
+.elite-card-top img{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:50%;
+}
+
+.elite-card-top span{
+
+    color:var(--gold);
+
+    font-weight:700;
+
+    letter-spacing:2px;
+}
+
+.elite-card-middle h3{
+
+    font-size:2.4rem;
+
+    margin-bottom:80px;
+}
+
+.elite-card-bottom{
+
+    display:flex;
+
+    justify-content:space-between;
+}
+
+.elite-card-bottom small{
+
+    display:block;
+
+    color:var(--muted);
+
+    margin-bottom:6px;
+}
+
+.elite-card-bottom span{
+
+    color:var(--white);
+
+    font-weight:600;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:1000px){
+
+    .elite-grid{
+
+        grid-template-columns:1fr;
+
+        gap:50px;
+    }
+
+    .elite-form{
+
+        max-width:650px;
+
+        margin:auto;
+    }
+}
+
+@media(max-width:700px){
+
+    .elite-card-middle h3{
+
+        font-size:1.7rem;
+    }
+
+    .elite-card-bottom{
+
+        flex-direction:column;
+
+        gap:20px;
+    }
+
+    .elite-form{
+
+        padding:30px;
+    }
+}
+
+/* ==========================================
+   COMMUNITY SECTION
+========================================== */
+
+.community-section{
+
+    padding:140px 0;
+}
+
+
+/* ==========================================
+   GRID
+========================================== */
+
+.community-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:30px;
+
+    margin-top:70px;
+}
+
+
+/* ==========================================
+   CARD
+========================================== */
+
+.community-card{
+
+    background:
+    linear-gradient(
+        180deg,
+        rgba(255,255,255,.02),
+        rgba(255,255,255,.01)
+    );
+
+    border:1px solid var(--border);
+
+    border-radius:28px;
+
+    padding:40px;
+
+    transition:var(--transition);
+
+    position:relative;
+
+    overflow:hidden;
+
+    min-height:300px;
+}
+
+
+.community-card:hover{
+
+    transform:
+    translateY(-10px);
+
+    border-color:
+    rgba(212,175,55,.30);
+
+    box-shadow:
+    0 25px 60px rgba(0,0,0,.35);
+}
+
+
+/* ==========================================
+   GOLD GLOW
+========================================== */
+
+.community-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:220px;
+    height:220px;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(212,175,55,.10),
+        transparent 70%
+    );
+
+    top:-100px;
+    right:-100px;
+
+    opacity:0;
+
+    transition:.5s ease;
+}
+
+
+.community-card:hover::before{
+
+    opacity:1;
+}
+
+
+/* ==========================================
+   ICON
+========================================== */
+
+.community-icon{
+
+    width:80px;
+    height:80px;
+
+    border-radius:50%;
+
+    border:1px solid var(--border);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:var(--gold);
+
+    font-size:2rem;
+
+    margin-bottom:30px;
+
+    transition:.3s ease;
+}
+
+
+.community-card:hover .community-icon{
+
+    transform:scale(1.08);
+}
+
+
+/* ==========================================
+   TITLE
+========================================== */
+
+.community-card h3{
+
+    font-size:2.2rem;
+
+    margin-bottom:18px;
+}
+
+
+/* ==========================================
+   TEXT
+========================================== */
+
+.community-card p{
+
+    color:var(--muted);
+
+    line-height:1.9;
+
+    margin-bottom:35px;
+}
+
+
+/* ==========================================
+   LINK
+========================================== */
+
+.community-link{
+
+    color:var(--gold);
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.3s ease;
+}
+
+
+.community-link:hover{
+
+    padding-left:8px;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:1000px){
+
+    .community-grid{
+
+        grid-template-columns:1fr;
+    }
+
+}
+
+
+/* ==========================================
+   TAKEOFF CTA SECTION
+========================================== */
+
+.takeoff-section{
+
+    padding:160px 0;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+
+/* ==========================================
+   LAYOUT
+========================================== */
+
+.takeoff-container{
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:80px;
+
+    align-items:center;
+}
+
+
+/* ==========================================
+   CONTENT
+========================================== */
+
+.takeoff-content{
+
+    max-width:650px;
+}
+
+
+.takeoff-content h2{
+
+    font-size:
+    clamp(4rem,8vw,7rem);
+
+    line-height:.95;
+
+    margin:25px 0;
+
+    max-width:800px;
+}
+
+
+.takeoff-content p{
+
+    color:var(--muted);
+
+    font-size:1.15rem;
+
+    line-height:2;
+
+    max-width:600px;
+
+    margin-bottom:40px;
+}
+
+
+/* ==========================================
+   BUTTONS
+========================================== */
+
+.takeoff-buttons{
+
+    display:flex;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+}
+
+
+/* ==========================================
+   IMAGE
+========================================== */
+
+.takeoff-image{
+
+    position:relative;
+}
+
+
+.takeoff-image img{
+
+    width:100%;
+
+    border-radius:35px;
+
+    border:1px solid var(--border);
+
+    box-shadow:
+    0 30px 80px rgba(0,0,0,.45);
+
+    transition:.5s ease;
+}
+
+
+.takeoff-image img:hover{
+
+    transform:
+    translateY(-10px);
+}
+
+
+/* ==========================================
+   GOLD GLOW
+========================================== */
+
+.takeoff-image::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(212,175,55,.15),
+        transparent 70%
+    );
+
+    top:-150px;
+    right:-150px;
+
+    z-index:-1;
+}
+
+
+/* ==========================================
+   SECTION GLOW
+========================================== */
+
+.takeoff-section::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:800px;
+    height:800px;
+
+    left:-300px;
+    bottom:-300px;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(212,175,55,.05),
+        transparent 70%
+    );
+
+    pointer-events:none;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:1100px){
+
+    .takeoff-container{
+
+        grid-template-columns:1fr;
+
+        text-align:center;
+    }
+
+    .takeoff-content{
+
+        max-width:none;
+    }
+
+    .takeoff-content p{
+
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .takeoff-buttons{
+
+        justify-content:center;
+    }
+
+    .takeoff-image{
+
+        max-width:850px;
+
+        margin:auto;
+    }
+}
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+.footer{
+
+    position:relative;
+
+    padding-top:120px;
+
+    border-top:
+    1px solid var(--border);
+
+    overflow:hidden;
+}
+
+
+/* ==========================================
+   TOP AREA
+========================================== */
+
+.footer-top{
+
+    display:grid;
+
+    grid-template-columns:
+    1.5fr 1fr 1fr;
+
+    gap:80px;
+
+    align-items:start;
+}
+
+
+/* ==========================================
+   BRAND
+========================================== */
+
+.footer-brand img{
+
+    width:70px;
+
+    height:70px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    margin-bottom:20px;
+}
+
+
+.footer-brand h3{
+
+    font-size:2rem;
+
+    margin-bottom:10px;
+}
+
+
+.footer-brand p{
+
+    color:var(--gold);
+
+    letter-spacing:1px;
+}
+
+
+/* ==========================================
+   LINKS
+========================================== */
+
+.footer-links h4{
+
+    margin-bottom:25px;
+
+    font-size:1.1rem;
+}
+
+
+.footer-links{
+
+    display:flex;
+
+    flex-direction:column;
+}
+
+
+.footer-links a{
+
+    color:var(--muted);
+
+    text-decoration:none;
+
+    margin-bottom:15px;
+
+    transition:.3s ease;
+}
+
+
+.footer-links a:hover{
+
+    color:var(--gold);
+
+    padding-left:8px;
+}
+
+
+/* ==========================================
+   AIRCRAFT IMAGE
+========================================== */
+
+.footer-plane{
+
+    margin-top:100px;
+
+    position:relative;
+}
+
+
+.footer-plane img{
+
+    width:100%;
+
+    opacity:.9;
+
+    display:block;
+}
+
+
+/* ==========================================
+   FOOTER BOTTOM
+========================================== */
+
+.footer-bottom{
+
+    border-top:
+    1px solid var(--border);
+
+    margin-top:50px;
+
+    padding:30px 0;
+
+    text-align:center;
+}
+
+
+.footer-bottom p{
+
+    color:var(--muted);
+}
+
+
+/* ==========================================
+   GOLD GLOW
+========================================== */
+
+.footer::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:700px;
+    height:700px;
+
+    right:-250px;
+    top:-250px;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(212,175,55,.08),
+        transparent 70%
+    );
+
+    pointer-events:none;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:1000px){
+
+    .footer-top{
+
+        grid-template-columns:1fr;
+
+        gap:50px;
+
+        text-align:center;
+    }
+
+    .footer-links{
+
+        align-items:center;
+    }
+
+    .footer-brand{
+
+        display:flex;
+
+        flex-direction:column;
+
+        align-items:center;
+    }
+}
+
+header,
+section,
+footer{
+
+    position:relative;
+
+    z-index:1;
+}
+
+#aircraft,
+#story,
+#vision,
+#elite,
+#community{
+    scroll-margin-top:120px;
+}
