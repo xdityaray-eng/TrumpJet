@@ -2412,6 +2412,16 @@ footer{
     z-index:1;
 }
 
+::selection {
+    background: #D4AF37;
+    color: #000;
+}
+
+::-moz-selection {
+    background: #D4AF37;
+    color: #000;
+}
+
 #aircraft,
 #story,
 #vision,
